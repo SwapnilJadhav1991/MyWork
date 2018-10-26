@@ -1,0 +1,33 @@
+package com.jbk;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class LoginServlet extends HttpServlet {
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("I am in service...");
+
+		// get data
+		String uname = req.getParameter("uname");
+		System.out.println(uname);
+
+		// process data // core java
+
+		if ("admin".equals(uname)) {
+			// navigate
+			RequestDispatcher rd = req.getRequestDispatcher("success.html");
+			rd.forward(req, res);
+		} else {
+			// navigate
+			RequestDispatcher rd = req.getRequestDispatcher("error.html");
+			rd.forward(req, res);
+		}
+
+	}
+}
+
